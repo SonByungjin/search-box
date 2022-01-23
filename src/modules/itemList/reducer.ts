@@ -16,7 +16,17 @@ export const ItemListReducer = (
 ): ItemListState => {
   switch (action.type) {
     case ITEMLIST_FETCH:
-      // 여기서 count 프로퍼티를 넣고
+      if (state.result && state.result.length) {
+        const stateModified = state.result.map((el: any) => {
+          if (!el.count) {
+            el["count"] = 0;
+          }
+          return el;
+        });
+        return {
+          result: stateModified,
+        };
+      }
       return state;
     case ITEMLIST_COUNT:
       // 여기서 조회수를 올려준다
