@@ -4,6 +4,8 @@ import { selectItemCountById } from "modules/itemList";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
+import './DetailScreen.scss';
+
 const DetailScreen: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

@@ -3,6 +3,8 @@ import { FC, useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import './SearchScreen.scss';
+
 interface AutoCompleteItem {
   id: string;
   name: string;
@@ -38,9 +40,7 @@ const SearchScreen: FC = () => {
   }
 
   useEffect(() => {
-    if(input.length >= 2) {
-      setAutoCompleteItem(createAutoCompleteItems());
-    }
+    setAutoCompleteItem(input.length >= 2 ? createAutoCompleteItems() : []);
   }, [input, createAutoCompleteItems]);
 
   return <div className="pg_search__wrapper">
@@ -52,7 +52,13 @@ const SearchScreen: FC = () => {
         }}
       />
     </div>
-    <div className="pg_search__auto">
+    {autoCompleteItem.length ? <div className="pg_search__auto">
+      <div className="pg_search__auto__header">
+        <span>검색어</span>
+        <span>id</span>
+        <span>name</span>
+        <span>분류</span>
+      </div>
       {autoCompleteItem.map(({id, name, category, word}, idx) => {
         return <div key={idx} className="pg_search__auto__container" onClick={()=>handleItemClick(id, word)}>
           <span>{word}</span>
@@ -61,7 +67,7 @@ const SearchScreen: FC = () => {
           <span>{category}</span>
         </div>
       })}
-    </div>
+    </div> : null}
   </div>;
 };
 

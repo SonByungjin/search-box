@@ -15,7 +15,7 @@ export const createSearchable = (item: any): string[] => {
     }
   }
   addSearchable(item)
-  return searchable;
+  return Array.from(new Set(searchable));
 }
 
 export const createUri = (searchInput: string, mockItem: any): string => {
