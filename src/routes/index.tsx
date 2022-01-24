@@ -13,8 +13,7 @@ export const RoutesComponent: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<SearchScreen />} />
-      <Route path="/detail" element={<DetailScreen />} />
-      <Route path="/detail/:id?" element={<DetailScreen />} />
+      <Route path="/detail/:info" element={<DetailScreen />} />
       <Route path="/*" element={<Navigate to="/" replace={true} />} />
     </Routes>
   );

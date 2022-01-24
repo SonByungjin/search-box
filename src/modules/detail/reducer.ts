@@ -4,7 +4,6 @@ import { DETAIL_FETCH, DETAIL_DATA, DETAIL_ERROR } from "./constants";
 
 export interface DetailItemInterface {
   id: string;
-  count: number;
   uri: string;
 }
 
@@ -17,7 +16,6 @@ export interface DetailState {
 export const initialDetailState: DetailState = {
   result: {
     id: '',
-    count: 0,
     uri: ''
   },
   loading: false,

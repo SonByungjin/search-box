@@ -7,11 +7,10 @@ import mock from 'mocks/mock.json';
 
 export function* detailSaga(action: DetailFetch) {
   try {
-    const { id, count, input } = action.payload;
+    const { id, word } = action.payload;
     yield put(detailData({
       id,
-      count: count + 1,
-      uri: createUri(input, mock.filter(item => String(item.id) === id))
+      uri: createUri(word, mock.filter(item => String(item.id) === id))
     }));
     yield put(itemListCount({ id }))
   } catch (error: any) {

@@ -6,8 +6,7 @@ export interface DetailFetch {
   type: typeof DETAIL_FETCH;
   payload: {
     id: string;
-    count: number;
-    input: string;
+    word: string;
   };
 }
 
