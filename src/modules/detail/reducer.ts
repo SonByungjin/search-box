@@ -4,16 +4,22 @@ import { DETAIL_FETCH, DETAIL_DATA, DETAIL_ERROR } from "./constants";
 
 export interface DetailItemInterface {
   id: string;
+  count: number;
+  uri: string;
 }
 
 export interface DetailState {
-  result: DetailItemInterface[];
+  result: DetailItemInterface;
   loading: boolean;
   error?: CommonError;
 }
 
 export const initialDetailState: DetailState = {
-  result: [],
+  result: {
+    id: '',
+    count: 0,
+    uri: ''
+  },
   loading: false,
 };
 

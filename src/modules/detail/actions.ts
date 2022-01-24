@@ -6,12 +6,14 @@ export interface DetailFetch {
   type: typeof DETAIL_FETCH;
   payload: {
     id: string;
+    count: number;
+    input: string;
   };
 }
 
 export interface DetailData {
   type: typeof DETAIL_DATA;
-  payload: DetailItemInterface[];
+  payload: DetailItemInterface;
 }
 
 export interface DetailError {

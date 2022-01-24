@@ -1,13 +1,22 @@
 import { ITEMLIST_FETCH, ITEMLIST_COUNT } from "./constants";
 import mock from "mocks/mock.json";
 import { ItemListAction } from "./actions";
+import { createSearchable } from "utils";
+
+export interface ItemInterface {
+  id: string;
+  name: string;
+  category: string;
+  count: number;
+  searchable: string[];
+}
 
 export interface ItemListState {
-  result: any;
+  result: ItemInterface[];
 }
 
 export const mockInitialState: ItemListState = {
-  result: mock,
+  result: [],
 };
 
 export const ItemListReducer = (
@@ -16,21 +25,38 @@ export const ItemListReducer = (
 ): ItemListState => {
   switch (action.type) {
     case ITEMLIST_FETCH:
-      if (state.result && state.result.length) {
-        const stateModified = state.result.map((el: any) => {
-          if (!el.count) {
-            el["count"] = 0;
-          }
-          return el;
-        });
-        return {
-          result: stateModified,
-        };
+      if (state.result.length) {
+        return state;
       }
-      return state;
+
+      const stateModified = mock.map((el: any) => {
+        return {
+          id: String(el['id']),
+          name: el['name'],
+          category: el['category'],
+          count: 0,
+          searchable: createSearchable(el),
+        };
+      });
+
+      return {
+        result: stateModified,
+      };
     case ITEMLIST_COUNT:
-      // 여기서 조회수를 올려준다
-      return state;
+      const stateCountUp = state.result.map((item) => {
+        if(item.id === action.payload.id) {
+          return {
+            ...item,
+            count: item.count + 1
+          }
+        } else {
+          return item
+        }
+      })
+
+      return {
+        result: stateCountUp
+      };
     default:
       return state;
   }

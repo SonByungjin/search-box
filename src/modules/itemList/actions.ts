@@ -7,7 +7,7 @@ export interface ItemListFetch {
 export interface ItemListCount {
   type: typeof ITEMLIST_COUNT;
   payload: {
-    id: number;
+    id: string;
   };
 }
 
