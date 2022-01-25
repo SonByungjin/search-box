@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchScreen show render 1`] = `
+<div
+  className="pg_search__wrapper"
+>
+  <div
+    className="pg_search__input"
+  >
+    <input
+      onChange={[Function]}
+      placeholder="검색어 입력"
+      value=""
+    />
+  </div>
+</div>
+`;
