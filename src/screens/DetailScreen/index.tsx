@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import "./DetailScreen.scss";
 
-const DetailScreen: FC = () => {
+export const DetailScreen: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const params = useParams();
@@ -46,5 +46,3 @@ const DetailScreen: FC = () => {
     </div>
   );
 };
-
-export { DetailScreen };

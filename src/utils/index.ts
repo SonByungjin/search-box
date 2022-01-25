@@ -1,8 +1,15 @@
+import { ItemInterface } from "modules/itemList";
+import { AutoCompleteItem } from "screens";
+
 export const SEARCH_KEYS = ['category', 'name', 'content', 'tags'];
 
-export const createSearchable = (item: any): string[] => {
+export interface MockItem {
+  [key: string]: any;
+}
+
+export const createSearchable = (item: MockItem): string[] => {
   let searchable: string[] = [];
-  const addSearchable = (value: any) => {
+  const addSearchable = (value: MockItem) => {
     if(typeof(value) !== 'object') {
       return
     }
@@ -18,9 +25,9 @@ export const createSearchable = (item: any): string[] => {
   return Array.from(new Set(searchable));
 }
 
-export const createUri = (searchInput: string, mockItem: any): string => {
+export const createUri = (searchInput: string, mockItem: MockItem): string => {
   let searchUri: string[] = [];
-  const addUri = (value: any) => {
+  const addUri = (value: MockItem) => {
     if(typeof(value) === 'object') {
       for(const key in value) {
         if(value[key] === searchInput) {
@@ -34,7 +41,25 @@ export const createUri = (searchInput: string, mockItem: any): string => {
     }
   }
 
-  // addUri(mock.filter(item => item.id === id));
   mockItem && addUri(mockItem);
+  searchUri.push(mockItem['id'] || '');
   return searchUri.reverse().join('.');
+}
+
+
+export const filterAutoCompleteItems = (list: ItemInterface[], search: string): AutoCompleteItem[] => {
+  const autoCompleteItems: AutoCompleteItem[] = [];
+  list.forEach(({ id, name, category, searchable }) => {
+    searchable.forEach((word) => {
+      if (word.includes(search)) {
+        autoCompleteItems.push({
+          id,
+          name,
+          category,
+          word,
+        });
+      }
+    });
+  });
+  return autoCompleteItems;
 }

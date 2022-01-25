@@ -2,17 +2,18 @@ import { selectItemList } from "modules/itemList";
 import { FC, useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { filterAutoCompleteItems } from "utils";
 
 import "./SearchScreen.scss";
 
-interface AutoCompleteItem {
+export interface AutoCompleteItem {
   id: string;
   name: string;
   category: string;
   word: string;
 }
 
-const SearchScreen: FC = () => {
+export const SearchScreen: FC = () => {
   const navigate = useNavigate();
   const itemList = useSelector(selectItemList);
   const [input, setInput] = useState<string>("");
@@ -20,22 +21,8 @@ const SearchScreen: FC = () => {
     []
   );
 
-  const createAutoCompleteItems = useCallback(() => {
-    const autoCompleteItems: AutoCompleteItem[] = [];
-    itemList.forEach(({ id, name, category, searchable, count }) => {
-      searchable.forEach((word) => {
-        if (word.includes(input)) {
-          autoCompleteItems.push({
-            id,
-            name,
-            category,
-            word,
-          });
-        }
-      });
-    });
-    return autoCompleteItems;
-  }, [input, itemList]);
+
+  const createAutoCompleteItems = useCallback(() => filterAutoCompleteItems(itemList, input), [input, itemList]);
 
   const handleItemClick = (id: string, word: string) => {
     navigate(`/detail/id=${id}&word=${word}&input=${input}`);
@@ -83,5 +70,3 @@ const SearchScreen: FC = () => {
     </div>
   );
 };
-
-export { SearchScreen };
