@@ -10,7 +10,7 @@ import { SearchScreen } from "../SearchScreen";
 const store = createStore(rootReducer);
 
 describe("SearchScreen", () => {
-  test("show render", () => {
+  test("check Snapshot", () => {
     const view = renderer
       .create(
         <Provider store={store}>

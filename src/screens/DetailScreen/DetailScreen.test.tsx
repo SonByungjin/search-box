@@ -9,8 +9,8 @@ import { DetailScreen } from "../DetailScreen";
 
 const store = createStore(rootReducer);
 
-describe("SearchScreen", () => {
-  test("show render", () => {
+describe("DetailScreen", () => {
+  test("check Snapshot", () => {
     const view = renderer
       .create(
         <Provider store={store}>
