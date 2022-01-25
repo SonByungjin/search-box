@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchScreen show render 1`] = `
+<div
+  className="pg_detail__wrapper"
+>
+  <div
+    className="pg_detail__nav"
+  >
+    <button
+      onClick={[Function]}
+    >
+      뒤로 가기
+    </button>
+  </div>
+  <div
+    className="pg_detail__count"
+  >
+    <span>
+      조회수:
+    </span>
+    <span>
+      0
+    </span>
+  </div>
+  <div
+    className="pg_detail__uri"
+  >
+    <span>
+      URI:
+    </span>
+    <span>
+      .undefined
+    </span>
+  </div>
+</div>
+`;

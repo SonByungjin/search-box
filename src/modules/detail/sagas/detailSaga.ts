@@ -10,7 +10,7 @@ export function* detailSaga(action: DetailFetch) {
     const { id, word } = action.payload;
     yield put(detailData({
       id,
-      uri: createUri(word, mock.filter(item => String(item.id) === id))
+      uri: createUri(word, mock.filter(item => String(item.id) === id)[0])
     }));
     yield put(itemListCount({ id }))
   } catch (error: any) {
