@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import { itemListFetch } from "modules/itemList";
 import { FC, useEffect } from "react";
 import { useDispatch } from "react-redux";

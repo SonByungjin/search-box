@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import { selectItemList } from "modules/itemList";
 import { FC, useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -22,8 +22,10 @@ export const SearchScreen: FC = () => {
     []
   );
 
-
-  const createAutoCompleteItems = useCallback(() => filterAutoCompleteItems(itemList, input), [input, itemList]);
+  const createAutoCompleteItems = useCallback(
+    () => filterAutoCompleteItems(itemList, input),
+    [input, itemList]
+  );
 
   const handleItemClick = (id: string, word: string) => {
     navigate(`/detail/id=${id}&word=${word}&input=${input}`);

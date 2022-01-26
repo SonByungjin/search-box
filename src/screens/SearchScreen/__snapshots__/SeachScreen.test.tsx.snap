@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchScreen show render 1`] = `
+exports[`SearchScreen check Snapshot 1`] = `
 <div
   className="pg_search__wrapper"
 >

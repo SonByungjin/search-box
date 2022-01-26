@@ -1,6 +1,6 @@
 .pg_search {
   &__wrapper {
-    width: 100vw;
+    width: calc(100vw - 10%);
     height: 100vh;
     display: flex;
     flex-direction: column;
