@@ -16,11 +16,12 @@ describe("util 함수 테스트", () => {
         score: "test",
       },
     },
-    searchable: ["category", "name", "content", "tag1", "tag2"],
   };
 
+  const mockItemSearchable = ["category", "name", "content", "tag1", "tag2"];
+
   test("정해진 키값에 맞게 자동 완성 단어가 모이는가", () => {
-    expect(utils.createSearchable(mockItem)).toEqual(mockItem["searchable"]);
+    expect(utils.createSearchable(mockItem)).toEqual(mockItemSearchable);
   });
 
   test("uri 경로에 따라 해당 값이 실제로 존재 하는가", () => {
@@ -44,15 +45,15 @@ describe("util 함수 테스트", () => {
 
   test("자동 완성 배열의 요소 개수가 실제 데이터 매칭 개수와 일치하는가", () => {
     const testStringAuto = "tag";
-    const { id, name, category, searchable } = mockItem;
+    const { id, name, category } = mockItem;
     const mockItemFilterd: ItemInterface = {
       id,
       name,
       category,
-      searchable,
+      searchable: mockItemSearchable,
       count: 0,
     };
-    const testStringAutoCount = mockItemFilterd.searchable.filter((search) =>
+    const testStringAutoCount = mockItemSearchable.filter((search) =>
       search.includes(testStringAuto)
     ).length;
     expect(
